@@ -5,13 +5,11 @@
 				<h1><%= @post.title %></h1>
 			</header>
 			<br>
-			<div id="content" class="skinnywrapper">
-			<p>
-			<%= @post.content %>
-			</p>
-				
+			<div id="content">
+				<%= simple_format @post.content %>
 			</div>
-			<div id="sharebox" class="skinnywrapper">
+
+			<div id="sharebox">
 				<p3>Share The DO List</p>
 				<a onclick="javascript:window.open('http://twitter.com/share?text=<%= @post.title %> by @Seanmcraig - &amp;url=<%=url_for([@post, {only_path: false}]) %>', '_blank', 'width=800, height=500, top=200, left=300');void(0);"><i class="fa fa-twitter"></i></a>
 
@@ -21,3 +19,5 @@
 			</div>
 		</div>
 
+<%= link_to "Edit", edit_post_path(@post) %>
+<%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure?"} %>
